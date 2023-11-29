@@ -39,9 +39,12 @@
             </div>
             <div class="navbar">
                <ul>
-                  <li><a href="{% url 'acceuil' %}" style="color:black" class="active">Acceuil</a></li>
-                  <li><a href="{% url 'portfolio' %}" style="color:black">Portfolio</a></li>
-                  <li><a href="{% url 'actualites' %}" style="color:black">Actualite</a></li>
+                  <li><a href="{% url 'acceuil' %}#home" style="color:black">Accueil</a></li>
+                  <li><a href="{% url 'acceuil' %}#about" style="color:black">Auteur</a></li>
+                  <li><a href="{% url 'acceuil' %}#services" style="color:black">Services</a></li>
+                  <li><a href="{% url 'portfolio' %}" class="active" style="color:black">Portfolio</a></li>
+                  <li><a href="{% url 'acceuil' %}#blog" style="color:black">Projets</a></li>
+                  <li><a href="{% url 'actualites' %}" style="color:black">Actualités</a></li>
                   <li><a href="{% url 'message' %}" style="color:black">Contact</a></li>
                </ul>
             </div>
@@ -69,7 +72,7 @@
 
        <div class="row">
           <div class="gallery">
-          {% for portfolio in portfolios %}
+            {% for portfolio in portfolios %}
                 <div class="item" data-id="{{ portfolio.categorie }}">
                    <div class="inner">
                       <img src="{{ portfolio.image.url }}" alt="portfolio" />
@@ -79,7 +82,7 @@
                       </div>
                    </div>
                 </div>
-          {% endfor %}
+            {% endfor %}
           </div>
        </div>
        

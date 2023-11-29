@@ -50,10 +50,13 @@
             </div>
             <div class="navbar">
                <ul>
-                  <li><a href="{% url 'acceuil' %}" style="color:black" class="active">Acceuil</a></li>
+                  <li><a href="{% url 'acceuil' %}#home" style="color:black">Accueil</a></li>
+                  <li><a href="{% url 'acceuil' %}#about" style="color:black">Auteur</a></li>
+                  <li><a href="{% url 'acceuil' %}#services" style="color:black">Services</a></li>
                   <li><a href="{% url 'portfolio' %}" style="color:black">Portfolio</a></li>
-                  <li><a href="{% url 'actualites' %}" style="color:black">Actualite</a></li>
-                  <li><a href="{% url 'message' %}" style="color:black">Contact</a></li>
+                  <li><a href="{% url 'acceuil' %}#blog" style="color:black">Projets</a></li>
+                  <li><a href="{% url 'actualites' %}" style="color:black">Actualités</a></li>
+                  <li><a href="{% url 'message' %}" style="color:black" class="active">Contact</a></li>
                </ul>
             </div>
          </div>
@@ -65,7 +68,7 @@
        <div class="container">
          <div class="row">
             <div class="title text-center">
-               <h1>Contact !</h1>
+               <h1>Contact</h1>
             </div>
          </div>
          <div class="row">
@@ -89,7 +92,7 @@
                   </div>
                   <div class="row">
                      <div class="col-12">
-                        <textarea class="form-control" name="message" placeholder="Votre commentaire" maxlength="80" required></textarea>
+                        <textarea class="form-control" name="message" placeholder="Votre message" maxlength="80" required></textarea>
                      </div>
                   </div>
                   <div class="row">

@@ -1,0 +1,130 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="keywords" content="HTML, CSS, JavaScript">
+   <meta name="description"
+      content="A clean, beautiful and responsive portfolio template for Developers! using only Html, CSS, and JavaScript">
+   <meta name="author" content="Puskar Adhikari">
+   <title>Vector Vision By Adama SANA</title>
+   <link href="{% static 'css/header.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/home.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/about.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/service.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/portfolio.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/testimonials.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/blog.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/contact.css' %}" rel="stylesheet" />
+   <link href="{% static 'css/footer.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+   <style>
+   .copyright {
+      margin-bottom: 0;
+   }
+   .custom-button {
+      padding: 10px 20px; /* Ajuster les valeurs pour la taille souhaitée */
+      background-color: #5f88e0; /* Bleu clair */
+      border: none;
+      border-radius: 0; /* Pas de coins arrondis */
+      color: white; /* Texte en blanc */
+      transition: background-color 0.3s;
+   }
+   .custom-button:hover {
+      background-color: #01143e; /* Couleur au survol */
+   }
+</style>
+   <header>
+      <div class="container">
+         <div class="row">
+            <div class="brand-name">
+               <a href="/" class="logo" style="color:black">Vector <span style="color: #ff0080;">Vision</span></a>
+            </div>
+            <div class="hamburger">
+               <i class="fa fa-bars"></i>
+            </div>
+            <div class="navbar">
+               <ul>
+                  <li><a href="{% url 'acceuil' %}#home" style="color:black" >Accueil</a></li>
+                  <li><a href="{% url 'acceuil' %}#about" style="color:black">Auteur</a></li>
+                  <li><a href="{% url 'acceuil' %}#services" style="color:black">Services</a></li>
+                  <li><a href="{% url 'portfolio' %}" style="color:black">Portfolio</a></li>
+                  <li><a href="{% url 'acceuil' %}#blog" style="color:black">Projets</a></li>
+                  <li><a href="{% url 'actualites' %}" style="color:black" class="active">Actualités</a></li>
+                  <li><a href="{% url 'message' %}" style="color:black">Contact</a></li>
+               </ul>
+            </div>
+         </div>
+      </div>
+   </header>
+
+   <body>
+   <section class="portfolio" id="portfolio">
+    <div class="container">
+       <div class="row">
+          <div class="title text-center">
+             <h1>{{actualite.titre}}</h1>
+          </div>
+       </div>
+       <div class="row" style="display:none;">
+         <div class="filter-btn">
+            <ul id="filterBtn">
+               <li class="active" data-target="all">All</li>
+            </ul>
+         </div>
+      </div>
+
+       <div class="row">
+         <div style="margin-bottom:15px; text-align:justify;">
+            <p>{{actualite.description}}</p>
+         </div>
+          <div class="gallery">
+            {% for profil_actualite in profils_actualite %}
+               <div class="item" data-id="{{ profil_actualite.categorie }}">
+                  <div class="inner">
+                     <img src="{{ profil_actualite.image.url }}" alt="portfolio" />
+                     <div class="overlay">
+                        <span class="fa fa-plus"></span>
+                        <h4>{{ profil_actualite.titre }}</h4>
+                     </div>
+                  </div>
+               </div>
+            {% endfor %}
+          </div>
+       </div>
+       
+    </div>
+ </section>
+
+ <footer>
+    <div class="container">
+       <div class="row">
+          <div class="footer-logo">Vector Vision</div>
+          <div class="social-link">
+             <a href="https://www.facebook.com/profile.php?id=100092401990193"><i class="fa fa-facebook"></i></a>
+             <a href="https://instagram.com/dems1817?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"><i class="fa fa-instagram"></i></a>
+             <a href="https://twitter.com/adamasana226?t=ocA6VOo6UNkzi7Fb4Qgw8A&s=08"><i class="fa fa-twitter"></i></a>
+             <a href="https://www.linkedin.com/in/adama-sana-6a5556263"><i class="fa fa-linkedin"></i></a>
+             <a href="https://github.com/Adamasana"><i class="fa fa-github"></i></a>
+          </div>
+       </div>
+    </div>
+ </footer>
+ <section class="copyright">
+    <div class="container">
+       <p>© <span id="year"></span> | Designed and Developed By Adama SANA. | All rights reserved.</p>
+    </div>
+ </section>
+ <div class="lightbox hide">
+    <span class="close-lightbox fa fa-close"></span>
+    <img src="" alt="portfolio" />
+ </div>
+ <script src="{% static 'js/app.js' %}"></script>
+</body>
+
+</html>

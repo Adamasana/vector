@@ -113,9 +113,12 @@
             </div>
             <div class="navbar">
                <ul>
-                  <li><a href="{% url 'acceuil' %}" style="color:black" class="active">Acceuil</a></li>
+                  <li><a href="{% url 'acceuil' %}#home" style="color:black">Accueil</a></li>
+                  <li><a href="{% url 'acceuil' %}#about" style="color:black">Auteur</a></li>
+                  <li><a href="{% url 'acceuil' %}#services" style="color:black">Services</a></li>
                   <li><a href="{% url 'portfolio' %}" style="color:black">Portfolio</a></li>
-                  <li><a href="{% url 'actualites' %}" style="color:black">Actualites</a></li>
+                  <li><a href="{% url 'acceuil' %}#blog" style="color:black">Projets</a></li>
+                  <li><a href="{% url 'actualites' %}" style="color:black" class="active">Actualités</a></li>
                   <li><a href="{% url 'message' %}" style="color:black">Contact</a></li>
                </ul>
             </div>
@@ -125,24 +128,29 @@
    <section class="body">
       <section class="portfolio" id="portfolio">
          <div class="container">
-            <div class="row">
-               <div class="title text-center">
-                  <h1>Actualites</h1>
-               </div>
-            </div>
-         {% for actualite in actualites %}
-            <div class="main-box">
-               <div class="image-box">
-                  <div class="image"><img src="{{ actualite.image.url }}"></div>
-               </div>
-               <div class="content-box">
-                  <h1 style="color: #022369;">{{actualite.titre}}</h1>
-                  <p>{{actualite.description}}</p>
-                  <p class="date" style="color: #022369;">{{actualite.date}}</p>
-               </div>
-            </div>
-         {% endfor %}
-   </section>
+             <div class="row">
+                 <div class="title text-center">
+                     <h1>Actualités</h1>
+                 </div>
+             </div>
+             {% for actualite in actualites %}
+               <a href="{% url 'profilactualites' actualite.id %}" style="text-decoration: none; color: inherit;">
+                 <div class="main-box">
+                     <div class="image-box">
+                         <div class="image"><img src="{{ actualite.image.url }}"></div>
+                     </div>
+                     <div class="content-box">
+                         <h1 style="color: #022369;">{{actualite.titre}}</h1>
+                         <p style="text-align: justify">{{ actualite.description|truncatechars:400|safe }}</p>
+                         <h4 style="margin-top:10px;">Voir plus...</h4>
+                         <p class="date" style="color: #022369;">{{actualite.date}}</p>
+                     </div>
+                 </div>
+             </a>
+             {% endfor %}
+         </div>
+     </section>
+     
 
    <footer>
     <div class="container">

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Portfolio, Projet, Message, Commentaire, Actualite
+from django.shortcuts import render, get_object_or_404
+from .models import Portfolio, Projet, Message, Commentaire, Actualite, Index, Presente, Tech0, Tech1, TextMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
@@ -9,10 +10,23 @@ def home(request):
         portfolios = Portfolio.objects.all()
         projets = Projet.objects.all()
         messages = Message.objects.all()
+        index = Index.objects.first()
+        presente = Presente.objects.first()
+        techs0 = Tech0.objects.all()
+        techs1 = Tech1.objects.all()
+        textmessage = TextMessage.objects.first()
         commentaires = Commentaire.objects.all()
         
 
-        context = {"portfolios": portfolios, "projets": projets, "messages": messages, "commentaires": commentaires}
+        context = {"portfolios": portfolios, 
+                    "projets": projets, 
+                    "messages": messages, 
+                    "commentaires": commentaires,
+                    "index": index,
+                    "presente": presente,
+                    "techs0": techs0,
+                    "techs1": techs1,
+                    "textmessage": textmessage}
         return render(request, "blog/index.html", context=context)
 
     if request.method == "POST":
@@ -52,3 +66,17 @@ def actualite(request):
         actualites = Actualite.objects.all()
         context = {"actualites": actualites}
         return render(request, 'blog/actualite.html', context=context)
+    
+from django.shortcuts import render, get_object_or_404
+from .models import Actualite, ProfilActualite
+
+def profilactualite(request, actualite_id):
+    actualite = get_object_or_404(Actualite, id=actualite_id)
+    profils_actualite = ProfilActualite.objects.filter(post=actualite)
+
+    context = {
+        'actualite': actualite,
+        'profils_actualite': profils_actualite,
+    }
+
+    return render(request, 'blog/profilactualite.html', context)

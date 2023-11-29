@@ -54,29 +54,24 @@
                   <li><a href="#about">Auteur</a></li>
                   <li><a href="#services">Services</a></li>
                   <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
-<<<<<<< HEAD
-                  <li><a href="#blog">Projet</a></li>
-                  <li><a href="{% url 'actualites' %}">Actualite</a></li>
-=======
                   <li><a href="#blog">Projets</a></li>
-                  <li><a href="#">Actualites</a></li>
->>>>>>> 0554de3 (third commit)
+                  <li><a href="{% url 'actualites' %}">Actualités</a></li>
                   <li><a href="{% url 'message' %}">Contact</a></li>
                </ul>
             </div>
          </div>
       </div>
    </header>
-   <section class="home" id="home" style="background-image: url('/static/images/hero.png');">
+   <section class="home" id="home" style="background-image: url('{{ index.image.url }}');">
       <div class="container">
          <div class="row full-screen">
             <div class="home-content">
                <div class="block">
-                  <h6>Hello, je reponds au nom de </h6>
-                  <h1>SANA Adama</h1>
-                  <h3>Je suis <span style="color: #ff0080; font-weight: bold;">designer</span> et <span style="color: #ff0080; font-weight: bold;">developer</span></h3>
+                  <h6>{{index.salut}}</h6>
+                  <h1>{{index.nom}}</h1>
+                  <h3>{{index.intro}} <span style="color: #ff0080; font-weight: bold;">{{index.prof0}}</span> et <span style="color: #ff0080; font-weight: bold;">{{index.prof1}}</span></h3>
                   <div class="cv-btn">
-                     <a href="{% url 'message' %}">Me contacter</a>
+                     <a href="{% url 'message' %}">{{textmessage.nom}}</a>
                   </div>
                </div>
             </div>
@@ -95,37 +90,24 @@
             <div class="about-content">
                <div class="row">
                   <div class="img">
-                     <img src="{% static 'images/me.png' %}" alt='me' />
+                     <img src="{{ presente.image.url }}" alt='me' />
                   </div>
                   <div class="text">
-                     <h4>Je suis Adama SANA</h4>
-                     <h6><span>Developer web</span> / <span>Designer graphique</span> et <span>Responsable Vector
-                           Vision</span> vivant au Burkina
-                        Faso / Ouagadougou
-                     </h6>
-                     <p style="text-align:justify;">Je suis un designer et développeur web passionné par la création et le développement d'expériences visuelles uniques et élégantes. Mon expertise en design graphique inclut la conception de flyers, de logos, de badges, de cartes, d'affiches..., ainsi que la création de maquettes d'applications et de sites web.
-                        Côté développement web, je suis spécialisé dans la création de sites web pour les petites et moyennes entreprises, qu'ils soient statiques ou dynamiques.
-                        Mon objectif est de créer des produits qui captivent et inspirent, en combinant mon savoir-faire en design graphique et en développement web pour offrir des solutions uniques et sur mesure à mes clients.
-                        Si vous avez besoin d'un design graphique créatif ou d'un site web professionnel, je serais ravi de vous aider à concrétiser vos idées et à donner vie à vos projets.
-                     </p>
+                     <h4>{{presente.nom}}</h4>
+                     <h6><span>{{presente.prof0}}</span> / <span>{{presente.prof1}}</span> et <span>{{presente.prof2}}</span> {{presente.prof2}} </h6>
+                     <p style="text-align:justify;">{{presente.description}}</p>
                      <div class="skills">
                         <h6>Mes Outils Technologiques:</h6>
                         <div class="skills-list">
                            <ul class="fa-ul">
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>HTML5</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>CSS3</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Bootstrap</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>TailwinCSS</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>JavaScript</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Django</li>
+                              {% for tech in techs0 %}
+                                 <li><span class="fa-li"><i class="fas fa-check-square"></i></span>{{tech.nom}}</li>
+                              {% endfor %}
                            </ul>
                            <ul class="fa-ul">
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Adobe Photoshop</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Adobe Illustrator</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Adobe Premiere Pro</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Adobe XD</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Canva</li>
-                              <li><span class="fa-li"><i class="fas fa-check-square"></i></span>Capcut</li>
+                              {% for tech in techs1 %}
+                                 <li><span class="fa-li"><i class="fas fa-check-square"></i></span>{{tech.nom}}</li>
+                              {% endfor %}
                            </ul>
                         </div>
                      </div>
@@ -223,12 +205,10 @@
       <div class="container">
          <div class="row align-items-center">
             <div class="message-text">
-               <h2>Ma boîte de réception est toujours ouverte. Que ce soit pour poser une question, 
-                  discuter d'une collaboration ou me proposer un projet, je ferai de mon mieux pour 
-                  vous répondre le plus vite possible !</h2>
+               <h2>{{textmessage.description}}</h2>
             </div>
             <div class="button ">
-               <a href="{% url 'message' %}">Me contacter</a>
+               <a href="{% url 'message' %}">{{textmessage.nom}}</a>
             </div>
          </div>
       </div>
@@ -254,8 +234,12 @@
                         <span>{{ projet.categorie }}</span>
                      </div>
                      <h3>{{ projet.nom }}</h3>
-                     <p>{{ projet.description }}</p>
-                     <a href="https://devpuskar.netlify.app/blogs/04git">Consulter</a>
+                     <p style="text-align:justify;">{{ projet.description }}</p>
+                     {% if projet.lien %}
+                        <a href="{{ projet.lien }}" target="_blank">Consulter</a>
+                     {% else %}
+                        <a href="//vector226.pythonanywhere.com" target="_blank">Consulter</a>
+                     {% endif %}
                   </div>
                </div>
             {% endfor %}
@@ -281,7 +265,7 @@
                               <img src="{{ commentaire.image.url }}" />
                           {% else %}
                               <!-- Mettez ici l'URL de l'image par défaut -->
-                              <img src="/media/media/me.png" />
+                              <img src="/media/media/me.jpg" />
                           {% endif %}
                       </div>
                       <div class="testimonials-text">
@@ -296,8 +280,8 @@
             </div>
          </div>
       </div>
-
-      <section>
+</section
+<section>
    <div class="container">
       <div class="row">
          <div class="title text-center">
@@ -309,7 +293,7 @@
             <div class="row">
                <div class="contact-text">
                   <h2 style="font-size:23px; margin-bottom:10px;">Laissez un commentaire</h2>
-                  <p>Le nom, l'image et le message seront affichés. Cependant, vous n'êtes pas obligé de mettre votre propre image.</p>
+                  <p>Le nom, l'image et le message seront affichés.</p>
                </div>
             </div>
             
@@ -322,9 +306,10 @@
                </div>
                <div class="row space-between">
                   <div class="col-6">
-                     <input type="text" class="form-control" name="telephone" placeholder="Téléphone ou Email" maxlength="25" required />
+                     <input type="text" class="form-control" name="telephone" placeholder="Téléphone ou Email" maxlength="25" required style="margin-top:20px;"/>
                   </div>
                   <div class="col-6">
+                     <label style="font-size:15px; margin:0; padding:0;">Une image si vous souhaitez</label>
                      <input type="file" class="form-control" name="image" placeholder="Image" />
                   </div>
                </div>
