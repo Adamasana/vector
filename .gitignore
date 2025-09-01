@@ -1,0 +1,63 @@
+# Environnement virtuel
+env/
+venv/
+ENV/
+.venv/
+
+# Fichiers de configuration utilisateur
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.swp
+*.swo
+*.log
+
+# Django
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+*.pot
+*.mo
+
+# Migrations (optionnel)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Fichiers de tests ou de coverage
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+.pyre/
+.pytype/
+
+# Fichiers de build Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Configurations locales
+.env
+*.env
