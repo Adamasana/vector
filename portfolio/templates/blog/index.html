@@ -138,15 +138,15 @@
                <div class="box">
                   <div class="icon"><i class="fa fa-laptop"></i></div>
                   <h5>Design Web</h5>
-                  <p style="text-align:justify">Designer et développeur web passionné offrant des interfaces innovantes et 
-                     plaisantes. Expériences utilisateur fluides et intuitives pour renforcer la présence en ligne 
+                  <p style="text-align:justify">Designer et développeur web passionné offrant des interfaces innovantes et
+                     plaisantes. Expériences utilisateur fluides et intuitives pour renforcer la présence en ligne
                      des clients. Créativité et expertise pour donner vie à votre vision digitale.
                   </p>
                </div>
                <div class="box">
                   <div class="icon"><i class="fa fa-code"></i></div>
                   <h5>Developpement Web</h5>
-                  <p style="text-align:justify">Expert en développement web, je crée des sites web évolutifs 
+                  <p style="text-align:justify">Expert en développement web, je crée des sites web évolutifs
                      et économiquement viables qui boostent votre activité. Du développement de pages statiques
                       aux sites eCommerce complets, je vous offre une solution adaptée à vos besoins.
                   </p>
@@ -154,8 +154,8 @@
                <div class="box">
                   <div class="icon"><i class="fas fa-palette"></i></div>
                   <h5>Infographie</h5>
-                  <p style="text-align:justify">Expert en infographie créative, je réalise des designs uniques tels que des logos, 
-                     flyers, badges et maquettes d'applications. Si vous avez besoin d'un design graphique 
+                  <p style="text-align:justify">Expert en infographie créative, je réalise des designs uniques tels que des logos,
+                     flyers, badges et maquettes d'applications. Si vous avez besoin d'un design graphique
                      créatif, je suis là pour concrétiser vos idées et donner vie à vos projets.
                   </p>
                </div>
@@ -198,8 +198,14 @@
             {% endfor %}
             </div>
          </div>
-         
+
+
+
       </div>
+
+
+      <a href="{% url 'portfolio' %}" style="text-align: center; texte">Voir tout</a>
+
    </section>
    <section class="message">
       <div class="container">
@@ -270,7 +276,7 @@
                       </div>
                       <div class="testimonials-text">
                           <h6>{{ commentaire.nom }}</h6>
-                          <p>{{ commentaire.commentaire }}</p>
+                          <p style="text-align:justify;">{{ commentaire.commentaire }}</p>
                           <p style="margin-top: 10px; text-align:right;">{{ commentaire.date }}</p>
                       </div>
                   </div>
@@ -296,7 +302,7 @@
                   <p>Le nom, l'image et le message seront affichés.</p>
                </div>
             </div>
-            
+
             <form method="POST" enctype="multipart/form-data">
                {% csrf_token %}
                <div class="row space-between">
@@ -339,7 +345,7 @@
                <h1>Me contacter</h1>
             </div>
          </div>
-         
+
          <div class="row">
             <div class="contact-form">
                <div class="row">
