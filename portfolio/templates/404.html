@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404</title>
+  <style>
+    /* On centre l'image horizontalement et verticalement */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; /* ou la couleur que tu veux */
+    }
+
+    img {
+      max-width: 90vw;  /* max 90% de la largeur de la fenêtre */
+      max-height: 90vh; /* max 90% de la hauteur de la fenêtre */
+      width: auto;
+      height: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+    <img src="{% static 'images/error.png' %}" alt="404" />
+</body>
+</html>
