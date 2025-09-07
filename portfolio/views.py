@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.shortcuts import render, get_object_or_404
 from .models import Portfolio, Projet, Message, Commentaire, Actualite, Index, Presente, Tech0, Tech1, TextMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render, get_object_or_404
+from .models import Actualite, ProfilActualite, ImageProjet
 # Create your views here.
 
 def home(request):
@@ -67,8 +69,7 @@ def actualite(request):
         context = {"actualites": actualites}
         return render(request, 'blog/actualite.html', context=context)
     
-from django.shortcuts import render, get_object_or_404
-from .models import Actualite, ProfilActualite
+
 
 def profilactualite(request, actualite_id):
     actualite = get_object_or_404(Actualite, id=actualite_id)
@@ -80,3 +81,16 @@ def profilactualite(request, actualite_id):
     }
 
     return render(request, 'blog/profilactualite.html', context)
+
+
+
+def profilprojet(request, projet_id):
+    projet = get_object_or_404(Projet, id=projet_id)
+    images_projet = ImageProjet.objects.filter(projet=projet)
+
+    context = {
+        'projet': projet,
+        'images_projet': images_projet,
+    }
+
+    return render(request, 'blog/profilprojet.html', context)

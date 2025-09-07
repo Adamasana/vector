@@ -71,7 +71,7 @@ class Actualite(models.Model):
     titre = models.TextField()
     image = models.ImageField(upload_to='media', blank=True)
     description = models.TextField(max_length=20000)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.titre
@@ -84,7 +84,20 @@ class ProfilActualite(models.Model):
     titre = models.TextField()
     image = models.ImageField(upload_to='media', blank=True)
     description = models.TextField(max_length=415)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.titre
+
+    class Meta:
+        ordering = ['-date']
+
+
+class ImageProjet(models.Model):
+    projet = models.ForeignKey(Projet, on_delete=models.CASCADE)
+    titre = models.TextField()
+    image = models.ImageField(upload_to='media', blank=True)
+    date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.titre

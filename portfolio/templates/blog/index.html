@@ -1,15 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="fr">
 <head>
    <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <meta name="keywords" content="HTML, CSS, JavaScript">
-   <meta name="description"
-      content="A clean, beautiful and responsive portfolio template for Developers! using only Html, CSS, and JavaScript">
-   <meta name="author" content="Puskar Adhikari"> 
-   <title>Vector Vision By Adama SANA</title>
+
+   <title>Adama SANA</title>
    <link href="{% static 'css/header.css' %}" rel="stylesheet" />
    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
    <link href="{% static 'css/home.css' %}" rel="stylesheet" />
@@ -28,22 +25,22 @@
       margin-bottom: 0;
    }
    .custom-button {
-      padding: 10px 20px; /* Ajuster les valeurs pour la taille souhaitée */
-      background-color: #5f88e0; /* Bleu clair */
+      padding: 10px 20px;
+      background-color: #5f88e0;
       border: none;
-      border-radius: 0; /* Pas de coins arrondis */
-      color: white; /* Texte en blanc */
+      border-radius: 0; 
+      color: white;
       transition: background-color 0.3s;
    }
    .custom-button:hover {
-      background-color: #01143e; /* Couleur au survol */
+      background-color: #01143e;
    }
    </style>
    <header>
       <div class="container">
          <div class="row">
             <div class="brand-name">
-               <a href="/" class="logo">Vector <span style="color: #ff0080;">Vision</span></a>
+               <a href="/" class="logo">Adama <span style="color: #ff0080;">SANA</span></a>
             </div>
             <div class="hamburger">
                <i class="fa fa-bars"></i>
@@ -52,8 +49,8 @@
                <ul>
                   <li><a href="#home" class="active">Accueil</a></li>
                   <li><a href="#about">Auteur</a></li>
-                  <li><a href="#services">Services</a></li>
-                  <li><a href="{% url 'portfolio' %}">Portfolio</a></li>
+                  <li><a href="#services">Compétences</a></li>
+                  <li><a href="{% url 'portfolio' %}">Graphisme</a></li>
                   <li><a href="#blog">Projets</a></li>
                   <li><a href="{% url 'actualites' %}">Actualités</a></li>
                   <li><a href="{% url 'message' %}">Contact</a></li>
@@ -94,7 +91,7 @@
                   </div>
                   <div class="text">
                      <h4>{{presente.nom}}</h4>
-                     <h6><span>{{presente.prof0}}</span> / <span>{{presente.prof1}}</span> et <span>{{presente.prof2}}</span> {{presente.prof2}} </h6>
+                     <h6><span>{{presente.prof0}}</span> / <span>{{presente.prof1}}</span> et <span>{{presente.prof2}}</span></h6>
                      <p style="text-align:justify;">{{presente.description}}</p>
                      <div class="skills">
                         <h6>Mes Outils Technologiques:</h6>
@@ -130,7 +127,7 @@
         </video> -->
          <div class="row">
             <div class="title text-center">
-               <h1>Services</h1>
+               <h1>Compétences</h1>
             </div>
          </div>
          <div class="row">
@@ -167,7 +164,7 @@
       <div class="container">
          <div class="row">
             <div class="title text-center">
-               <h1>Portfolio</h1>
+               <h1>Graphisme</h1>
             </div>
          </div>
          <div class="row">
@@ -196,15 +193,12 @@
                   </div>
                {% endif %}
             {% endfor %}
+
             </div>
          </div>
 
-
-
+         <p style="text-align: center"><a href="{% url 'portfolio' %}" style="text-align: center">Voir tout</a></p>
       </div>
-
-
-      <a href="{% url 'portfolio' %}" style="text-align: center; texte">Voir tout</a>
 
    </section>
    <section class="message">
@@ -240,12 +234,9 @@
                         <span>{{ projet.categorie }}</span>
                      </div>
                      <h3>{{ projet.nom }}</h3>
-                     <p style="text-align:justify;">{{ projet.description }}</p>
-                     {% if projet.lien %}
-                        <a href="{{ projet.lien }}" target="_blank">Consulter</a>
-                     {% else %}
-                        <a href="//vector226.pythonanywhere.com" target="_blank">Consulter</a>
-                     {% endif %}
+                     <p style="text-align:justify;">{{ projet.description|truncatechars:200|safe }}</p>   
+                     <h4 style="margin-top:10px; color: #5f88e0;"><a href="{% url 'profilprojet' projet.id %}">Voir plus...</a></h4>
+                     
                   </div>
                </div>
             {% endfor %}
@@ -257,7 +248,8 @@
    <section class="testimonials" style="padding: 0;">
       <div class="container">
          <div class="row">
-            <div class="title text-center">
+            
+            <div class="title text-center" style="margin-top: 30px;">
                <h1>Commentaires</h1>
             </div>
          </div>
@@ -380,7 +372,7 @@
    <footer>
       <div class="container">
          <div class="row">
-            <div class="footer-logo">Vector Vision</div>
+            <div class="footer-logo">Adama SANA</div>
             <div class="social-link">
                <a href="https://www.facebook.com/profile.php?id=100092401990193"><i class="fa fa-facebook"></i></a>
                <a href="https://instagram.com/dems1817?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"><i class="fa fa-instagram"></i></a>

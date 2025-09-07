@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
    <meta charset="UTF-8" />
@@ -38,83 +38,80 @@
    .custom-button:hover {
       background-color: #01143e; /* Couleur au survol */
    }
-   </style>
+</style>
    <header>
       <div class="container">
          <div class="row">
             <div class="brand-name">
-               <a href="/" class="logo"><span style="color:black;">Vector <span style="color: #ff0080;">Vision</span></a>
+               <a href="/" class="logo" style="color:black">Adama <span style="color: #ff0080;">SANA</span></a>
             </div>
             <div class="hamburger">
                <i class="fa fa-bars"></i>
             </div>
             <div class="navbar">
                <ul>
-                  <li><a href="{% url 'acceuil' %}#home" style="color:black">Accueil</a></li>
+                  <li><a href="{% url 'acceuil' %}#home" style="color:black" >Accueil</a></li>
                   <li><a href="{% url 'acceuil' %}#about" style="color:black">Auteur</a></li>
                   <li><a href="{% url 'acceuil' %}#services" style="color:black">Compétences</a></li>
                   <li><a href="{% url 'portfolio' %}" style="color:black">Graphisme</a></li>
                   <li><a href="{% url 'acceuil' %}#blog" style="color:black">Projets</a></li>
-                  <li><a href="{% url 'actualites' %}" style="color:black">Actualités</a></li>
-                  <li><a href="{% url 'message' %}" style="color:black" class="active">Contact</a></li>
+                  <li><a href="{% url 'actualites' %}" style="color:black" class="active">Actualités</a></li>
+                  <li><a href="{% url 'message' %}" style="color:black">Contact</a></li>
                </ul>
             </div>
          </div>
       </div>
    </header>
 
+   <body>
    <section class="portfolio" id="portfolio">
     <div class="container">
-       <div class="container">
-         <div class="row">
-            <div class="title text-center">
-               <h1>Contact</h1>
-            </div>
-         </div>
-         <div class="row">
-            <div class="contact-form" style="margin-bottom: 10px;">
-               <div class="row">
-                  <div class="contact-text">
-                     <h2>Laissez un message</h2>
-                     <p>N'hesitez pas</p>
-                  </div>
-               </div>
-               
-               <form method="POST" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  <div class="row space-between">
-                     <div class="col-6">
-                        <input type="text" class="form-control" name="nom" placeholder="Nom et prénom" maxlength="25" required />
-                     </div>
-                     <div class="col-6">
-                      <input type="text" class="form-control" name="identifiant" placeholder="Téléphone" maxlength="15" required />
-                   </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-12">
-                        <textarea class="form-control" name="message" placeholder="Votre message" maxlength="80" required></textarea>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="button btn" >
-                        <button class="custom-button" type="submit">Valider</button>
-                     </div>
-                  </div>
-               </form>
-            </div>
+       <div class="row">
+          <div class="title text-center">
+             <h1>{{actualite.titre}}</h1>
+          </div>
+       </div>
+       <div class="row" style="display:none;">
+         <div class="filter-btn">
+            <ul id="filterBtn">
+               <li class="active" data-target="all">All</li>
+            </ul>
          </div>
       </div>
-   </section>
+
+       <div class="row">
+        <div class="title text-center">
+            <h1>{{projet.nom}}</h1>
+         </div>
+         <p style="margin-bottom: 30px;">{{projet.description}}</p>
+          <div class="gallery">
+            {% for image_projet in images_projet %}
+               <div class="item" data-id="{{ image_projet.categorie }}">
+                  <div class="inner">
+                     <img src="{{ image_projet.image.url }}" alt="portfolio" />
+                     <div class="overlay">
+                        <span class="fa fa-plus"></span>
+                        <h4>{{ image_projet.titre }}</h4>
+                     </div>
+                  </div>
+               </div>
+            {% endfor %}
+          </div>
+       </div>
+       
+    </div>
+ </section>
+
  <footer>
     <div class="container">
        <div class="row">
-          <div class="footer-logo">Vector Vision</div>
+          <div class="footer-logo">Adama SANA</div>
           <div class="social-link">
-            <a href="https://www.facebook.com/profile.php?id=100092401990193"><i class="fa fa-facebook"></i></a>
-            <a href="https://instagram.com/dems1817?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"><i class="fa fa-instagram"></i></a>
-            <a href="https://twitter.com/adamasana226?t=ocA6VOo6UNkzi7Fb4Qgw8A&s=08"><i class="fa fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/adama-sana-6a5556263"><i class="fa fa-linkedin"></i></a>
-            <a href="https://github.com/Adamasana"><i class="fa fa-github"></i></a>
+             <a href="https://www.facebook.com/profile.php?id=100092401990193"><i class="fa fa-facebook"></i></a>
+             <a href="https://instagram.com/dems1817?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D"><i class="fa fa-instagram"></i></a>
+             <a href="https://twitter.com/adamasana226?t=ocA6VOo6UNkzi7Fb4Qgw8A&s=08"><i class="fa fa-twitter"></i></a>
+             <a href="https://www.linkedin.com/in/adama-sana-6a5556263"><i class="fa fa-linkedin"></i></a>
+             <a href="https://github.com/Adamasana"><i class="fa fa-github"></i></a>
           </div>
        </div>
     </div>
