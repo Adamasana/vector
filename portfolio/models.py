@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.fields.related import ForeignKey
+from django.utils import timezone
 
 # Create your models here.
 
@@ -15,7 +16,7 @@ class Portfolio(models.Model):
     ]
     categorie = models.CharField(max_length=20, choices=CATEGORIE_CHOICES, default="ui")
     image = models.ImageField(upload_to='media')
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.nom
@@ -32,7 +33,7 @@ class Projet(models.Model):
     ]
     categorie = models.CharField(max_length=20, choices=CATEGORIE_CHOICES, default="web development")
     image = models.ImageField(upload_to='media')
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=timezone.now)
     lien = models.URLField(blank=True, null=True)
 
     def __str__(self):
@@ -47,7 +48,7 @@ class Commentaire(models.Model):
     identifiant = models.TextField()
     commentaire = models.TextField(max_length=100)
     image = models.ImageField(upload_to='media', blank=True)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.nom
@@ -59,7 +60,7 @@ class Message(models.Model):
     nom = models.TextField(default="Phantome")
     identifiant = models.TextField()
     message = models.TextField()
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.nom
@@ -71,7 +72,7 @@ class Actualite(models.Model):
     titre = models.TextField()
     image = models.ImageField(upload_to='media', blank=True)
     description = models.TextField(max_length=20000)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.titre
@@ -84,7 +85,7 @@ class ProfilActualite(models.Model):
     titre = models.TextField()
     image = models.ImageField(upload_to='media', blank=True)
     description = models.TextField(max_length=415)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.titre
@@ -97,7 +98,7 @@ class ImageProjet(models.Model):
     projet = models.ForeignKey(Projet, on_delete=models.CASCADE)
     titre = models.TextField()
     image = models.ImageField(upload_to='media', blank=True)
-    date = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.titre
