@@ -83,7 +83,9 @@
         <div class="title text-center">
             <h1>{{projet.nom}}</h1>
          </div>
-         <p style="margin-bottom: 30px;">{{projet.description}}</p>
+         {% for paragraphe in projet.description.splitlines %}
+            <p style="margin-bottom: 10px; text-align: justify;">{{ paragraphe }}</p>
+         {% endfor %}
           <div class="gallery">
             {% for image_projet in images_projet %}
                <div class="item" data-id="{{ image_projet.categorie }}">
